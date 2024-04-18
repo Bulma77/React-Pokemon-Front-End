@@ -1,0 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #f6f8fc;
+}
+.wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+}
