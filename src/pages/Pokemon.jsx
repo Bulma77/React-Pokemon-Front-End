@@ -11,6 +11,10 @@ const Pokemon = () => {
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
+  // selection pokemon
+
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -32,8 +36,18 @@ const Pokemon = () => {
     <Loader />
   ) : (
     <>
-      <h1>Pokemons</h1>
-      <Cards data={data} />
+      <div>
+        <h1>Pokemons</h1>
+        <Cards data={data} />
+      </div>
+      {/* {selectedPokemon === null ? (
+        <div>
+          <h1>Pokemons</h1>
+          <Cards data={data} />
+        </div>
+      ) : (
+        <div>Test</div>
+      )} */}
     </>
   );
 };

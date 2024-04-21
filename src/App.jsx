@@ -4,6 +4,8 @@ import "./App.css";
 // Pages
 import Home from "./pages/Home";
 import Pokemon from "./pages/Pokemon";
+import Type from "./pages/Type";
+import Pokemondetails from "./pages/Pokemondetails";
 
 // Components
 
@@ -17,6 +19,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/pokemon" element={<Pokemon />} />
+          <Route path="/type" element={<Type />} />
+          <Route path="/pokemon/:id" element={<Pokemondetails />} />
         </Routes>
       </Router>
     </>

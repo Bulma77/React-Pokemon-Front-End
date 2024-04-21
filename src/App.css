@@ -4,6 +4,10 @@
 
 body {
   background: #f6f8fc;
+  background-image: url("./assets/pokeball.png");
+  background-repeat: no-repeat;
+  /* background-position-x: -180px;
+  background-position-y: -80px; */
 }
 .wrapper {
   max-width: 1000px;
