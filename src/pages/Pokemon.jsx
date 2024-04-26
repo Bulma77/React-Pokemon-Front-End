@@ -1,53 +1,62 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useRef } from "react";
 
 // Import Loader
-import Loader from "../components/Loader";
+// import Loader from "../components/Loader";
 
 // Import card
-import Cards from "../components/Cards";
+import Cards from "../components/cards/Cards";
 
 const Pokemon = () => {
-  const [data, setData] = useState({});
+  const [allPokemons, setAllPokemons] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [loadMore, setLoadMore] = useState(
+    "https://pokeapi.co/api/v2/pokemon/?limit=21"
+  );
 
-  // selection pokemon
-
-  const [selectedPokemon, setSelectedPokemon] = useState(null);
+  //Afin d'éviter que useEffect ne monte deux fois (éviter qu'il affiche les données en double) rajouter le code suivant :const ShouldGetAllPokemon = useRef(true) useEffect(() => { if(ShouldGetAllPokemon.current) { ShouldGetAllPokemon.current = false getAllPokemons() } }, [])
+  //Autre solution pour eviter que useEffectne monte deu fois: supprimer les balises <React.StrictMode> dans main.jsx
+  const ShouldGetAllPokemon = useRef(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1302"
-        );
-        setData(response.data);
-        console.log(response.data);
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error.response);
+    {
+      if (ShouldGetAllPokemon.current) {
+        ShouldGetAllPokemon.current = false;
+        const getAllPokemons = async () => {
+          const response = await axios.get(loadMore);
+          console.log(response.data);
+          setLoadMore(response.data.next);
+
+          const getPokemon = (results) => {
+            results.map(async (pokemon) => {
+              const response = await axios.get(
+                `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
+              );
+              setAllPokemons((pokemonList) => [...pokemonList, response.data]);
+              allPokemons.sort((a, b) => a.id - b.id);
+              //   data=response.data
+              //   console.log(response.data);
+            });
+          };
+          getPokemon(response.data.results);
+          setIsLoading(false);
+        };
+
+        getAllPokemons();
       }
-    };
-    fetchData();
+    }
   }, []);
 
   return isLoading ? (
-    // <p> Loading in progress...</p>
-    <Loader />
+    <p>Loading in progress...</p>
   ) : (
     <>
-      <div>
-        <h1>Pokemons</h1>
-        <Cards data={data} />
-      </div>
-      {/* {selectedPokemon === null ? (
-        <div>
-          <h1>Pokemons</h1>
-          <Cards data={data} />
-        </div>
-      ) : (
-        <div>Test</div>
-      )} */}
+      <section className="all-pokemons">
+        <Cards allPokemons={allPokemons} />
+
+        <div className="right-coontent"></div>
+      </section>
     </>
   );
 };
