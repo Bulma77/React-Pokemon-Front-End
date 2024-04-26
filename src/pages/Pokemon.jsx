@@ -8,12 +8,16 @@ import { useRef } from "react";
 // Import card
 import Cards from "../components/cards/Cards";
 
+// import Search
+import Search from "../components/Search";
+
 const Pokemon = () => {
   const [allPokemons, setAllPokemons] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [loadMore, setLoadMore] = useState(
     "https://pokeapi.co/api/v2/pokemon/?limit=21"
   );
+  const [search, setSearch] = useState("");
 
   //Afin d'éviter que useEffect ne monte deux fois (éviter qu'il affiche les données en double) rajouter le code suivant :const ShouldGetAllPokemon = useRef(true) useEffect(() => { if(ShouldGetAllPokemon.current) { ShouldGetAllPokemon.current = false getAllPokemons() } }, [])
   //Autre solution pour eviter que useEffectne monte deu fois: supprimer les balises <React.StrictMode> dans main.jsx
@@ -35,8 +39,6 @@ const Pokemon = () => {
               );
               setAllPokemons((pokemonList) => [...pokemonList, response.data]);
               allPokemons.sort((a, b) => a.id - b.id);
-              //   data=response.data
-              //   console.log(response.data);
             });
           };
           getPokemon(response.data.results);
@@ -52,9 +54,9 @@ const Pokemon = () => {
     <p>Loading in progress...</p>
   ) : (
     <>
+      <Search setSearch={setSearch} />
       <section className="all-pokemons">
-        <Cards allPokemons={allPokemons} />
-
+        <Cards allPokemons={allPokemons} search={search} />
         <div className="right-coontent"></div>
       </section>
     </>
