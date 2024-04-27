@@ -1,13 +1,10 @@
+import { Link } from "react-router-dom";
 import "../cards/cards.css";
+import Button from "../Button";
 
-// import Detail from "../components/Detail";
-import { useState } from "react";
-
-const Cards = ({ allPokemons, search }) => {
-  const [selectedPokemon, setSelectedPokemon] = useState(null);
-
+const Cards = ({ allPokemons, search, infoPoke }) => {
   return (
-    <section className="all-pokemons">
+    <>
       <div className="left-content">
         <div className="pokemons-cards-left">
           {allPokemons
@@ -16,17 +13,11 @@ const Cards = ({ allPokemons, search }) => {
               // l'ajout de toLowerCase permet d'éviter que le search soit sensible à la casse.
             })
             .map((pokemon) => {
-              // console.log(pokemon);
-              const handleClick = () => {
-                setSelectedPokemon(pokemon.id);
-                console.log(pokemon.id);
-              };
-
               return (
                 <div
                   className="pokemons-cards"
                   key={pokemon.id}
-                  onClick={handleClick}
+                  onClick={() => infoPoke(pokemon)}
                 >
                   <img
                     className="pokemons-img"
@@ -39,25 +30,37 @@ const Cards = ({ allPokemons, search }) => {
               );
             })}
         </div>
-        <div className="btn">
-          <button className="load-more">Load More</button>
-
-          {/* <button className="load-more" onClick={() => loadMore()}>
-            Load More
-          </button> */}
-        </div>
+        <Button />
       </div>
 
-      <div className="pokemon-card-right">
-        {selectedPokemon === null ? (
-          <div>
-            <p>cool</p>
-          </div>
-        ) : (
-          <div>Test</div>
-        )}
+      <div className="pokemons-cards-tablet">
+        {allPokemons
+          .filter((pokemon) => {
+            return pokemon.name.toLowerCase().includes(search.toLowerCase());
+            // l'ajout de toLowerCase permet d'éviter que le search soit sensible à la casse.
+          })
+          .map((pokemon) => {
+            return (
+              <Link
+                to={`/pokemon/${pokemon.name}`}
+                key={pokemon.id}
+                className="pokemons-cards"
+              >
+                <div>
+                  <img
+                    className="pokemons-img"
+                    src={pokemon.sprites.front_default}
+                    alt={pokemon.name}
+                  />
+                  <p className="pokemons-text"># {pokemon.id}</p>
+                  <h2 className="pokemons-title">{pokemon.name}</h2>
+                </div>
+              </Link>
+            );
+          })}
+        <Button />
       </div>
-    </section>
+    </>
   );
 };
 

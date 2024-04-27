@@ -1,15 +1,51 @@
 * {
   box-sizing: border-box;
 }
+img {
+  object-fit: contain;
+}
 
 body {
   background: #f6f8fc;
-  background-image: url("./assets/pokeball.png");
+  /* background-image: url("./assets/pokeball.png"); */
   background-repeat: no-repeat;
   /* background-position-x: -180px;
   background-position-y: -80px; */
 }
 .wrapper {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
+}
+
+input {
+  height: 40px;
+  font-size: 20px;
+  width: 60%;
+  border: transparent;
+  text-align: center;
+  color: #787878;
+  flex: 1;
+}
+.search-bar {
+  margin: 30px 10px;
+  display: flex;
+}
+
+.search-btn {
+  background-color: #ff5350;
+  height: 40px;
+  width: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: #ff535088 5px 5px 15px;
+  color: white;
+  font-size: 18px;
+}
+.search-btn:hover {
+  opacity: 0.8;
+  box-shadow: #ff53509c 3px 3px 13px;
+}
+
+.all-pokemons {
+  display: flex;
 }

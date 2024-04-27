@@ -8,11 +8,19 @@ import { useRef } from "react";
 // Import card
 import Cards from "../components/cards/Cards";
 
+import InfoPokemon from "../components/InfoPokemon";
+
 // import Search
 import Search from "../components/Search";
 
+// import Fontawsome
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+library.add(faMagnifyingGlass);
+
 const Pokemon = () => {
   const [allPokemons, setAllPokemons] = useState([]);
+  const [pokedex, setPokedex] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [loadMore, setLoadMore] = useState(
     "https://pokeapi.co/api/v2/pokemon/?limit=21"
@@ -54,11 +62,18 @@ const Pokemon = () => {
     <p>Loading in progress...</p>
   ) : (
     <>
+      <section className="all-pokemons"></section>
       <Search setSearch={setSearch} />
-      <section className="all-pokemons">
-        <Cards allPokemons={allPokemons} search={search} />
-        <div className="right-coontent"></div>
-      </section>
+      <div className="all-pokemons">
+        <Cards
+          allPokemons={allPokemons}
+          search={search}
+          infoPoke={(poke) => setPokedex(poke)}
+        />
+
+        <InfoPokemon pokemon={pokedex} />
+      </div>
+      <section />
     </>
   );
 };
