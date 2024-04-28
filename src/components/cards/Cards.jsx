@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import "../cards/cards.css";
 import Button from "../Button";
 
-const Cards = ({ allPokemons, search, infoPoke }) => {
+const Cards = ({ allPokemons, search, infoPoke, setLoadMore }) => {
   return (
     <>
       <div className="left-content">
@@ -12,8 +12,9 @@ const Cards = ({ allPokemons, search, infoPoke }) => {
               return pokemon.name.toLowerCase().includes(search.toLowerCase());
               // l'ajout de toLowerCase permet d'éviter que le search soit sensible à la casse.
             })
+
             .map((pokemon) => {
-              return (
+              return pokemon.sprites.front_default ? (
                 <div
                   className="pokemons-cards"
                   key={pokemon.id}
@@ -27,6 +28,8 @@ const Cards = ({ allPokemons, search, infoPoke }) => {
                   <p className="pokemons-text"># {pokemon.id}</p>
                   <h2 className="pokemons-title">{pokemon.name}</h2>
                 </div>
+              ) : (
+                ""
               );
             })}
         </div>
@@ -58,7 +61,7 @@ const Cards = ({ allPokemons, search, infoPoke }) => {
               </Link>
             );
           })}
-        <Button />
+        <Button setLoadMore={setLoadMore} />
       </div>
     </>
   );

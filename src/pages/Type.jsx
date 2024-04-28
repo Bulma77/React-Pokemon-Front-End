@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import Loader from "../components/Loader";
+import { Link } from "react-router-dom";
 
 const Type = () => {
   const [data, setData] = useState([]);
@@ -29,7 +30,11 @@ const Type = () => {
         {data.results.map((types, index) => {
           // console.log(types);
           if (types.name !== "unknown") {
-            return <button key={index}>{types.name}</button>;
+            return (
+              <Link to={`/type/${types.name}`} key={index}>
+                <button>{types.name}</button>
+              </Link>
+            );
           }
         })}
       </div>

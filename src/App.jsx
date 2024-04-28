@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Pokemon from "./pages/Pokemon";
 import Type from "./pages/Type";
 import Pokemondetails from "./pages/Pokemondetails";
+import Typedetail from "./pages/Typedetail";
 
 // Components
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/pokemon" element={<Pokemon />} />
           <Route path="/type" element={<Type />} />
           <Route path="/pokemon/:id" element={<Pokemondetails />} />
+          <Route path="/type/:id" element={<Typedetail />} />
         </Routes>
       </Router>
     </>

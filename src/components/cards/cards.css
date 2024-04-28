@@ -79,6 +79,7 @@
   }
   .pokemons-cards-tablet {
     display: flex;
+    /* flex-direction: column; */
     flex-wrap: wrap;
     justify-content: space-around;
   }
@@ -96,6 +97,7 @@
   }
   .pokemons-cards-tablet {
     display: flex;
+    /* flex-direction: column; */
     flex-wrap: wrap;
     justify-content: space-around;
   }

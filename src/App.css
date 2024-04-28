@@ -49,3 +49,29 @@ input {
 .all-pokemons {
   display: flex;
 }
+
+.detail-pokemon {
+  margin: 10px auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Stats */
+.stat-detail {
+  display: flex;
+  justify-content: left;
+}
+
+/* Types pokemon */
+.type-pokemon {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.type-pokemon-detail {
+  width: 20%;
+  text-align: center;
+}

@@ -25,6 +25,7 @@ const Pokemon = () => {
   const [loadMore, setLoadMore] = useState(
     "https://pokeapi.co/api/v2/pokemon/?limit=21"
   );
+
   const [search, setSearch] = useState("");
 
   //Afin d'éviter que useEffect ne monte deux fois (éviter qu'il affiche les données en double) rajouter le code suivant :const ShouldGetAllPokemon = useRef(true) useEffect(() => { if(ShouldGetAllPokemon.current) { ShouldGetAllPokemon.current = false getAllPokemons() } }, [])
@@ -62,13 +63,14 @@ const Pokemon = () => {
     <p>Loading in progress...</p>
   ) : (
     <>
-      <section className="all-pokemons"></section>
+      {/* <section className="all-pokemons"></section> */}
       <Search setSearch={setSearch} />
       <div className="all-pokemons">
         <Cards
           allPokemons={allPokemons}
           search={search}
           infoPoke={(poke) => setPokedex(poke)}
+          setLoadMore={setLoadMore}
         />
 
         <InfoPokemon pokemon={pokedex} />

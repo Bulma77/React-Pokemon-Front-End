@@ -5,8 +5,16 @@ const Detail = ({ data, id }) => {
       id.toString()
     );
   return (
-    <div>
-      <img src={gif} alt={data.name} />
+    <div className="detail-pokemon">
+      {data.sprites.other.showdown.front_default ? (
+        <img
+          src={data.sprites.other.showdown.front_default}
+          alt={`image ${data.name}`}
+        />
+      ) : (
+        <img src={data.sprites.front_default} alt={`image ${data.name}`} />
+      )}
+
       <p>{data.name}</p>
       <div className="types">
         {data.types.map((type, index) => {

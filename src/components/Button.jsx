@@ -1,7 +1,7 @@
-const Button = () => {
+const Button = ({ setLoadMore }) => {
   return (
     <div className="btn">
-      <button className="load-more">Load More</button>
+      {setLoadMore && <button className="load-more">Load More</button>}
     </div>
   );
 };

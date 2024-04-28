@@ -1,3 +1,6 @@
+import Stats from "../components/Stats";
+import ProgressBar from "react-bootstrap/ProgressBar";
+
 const InfoPokemon = (pokemon) => {
   console.log(pokemon);
   return (
@@ -7,10 +10,17 @@ const InfoPokemon = (pokemon) => {
       ) : (
         <>
           <div className="right-content">
-            <img
-              src={pokemon.pokemon.sprites.other.showdown.front_default}
-              alt=""
-            />
+            {pokemon.pokemon.sprites.other.showdown.front_default ? (
+              <img
+                src={pokemon.pokemon.sprites.other.showdown.front_default}
+                alt={`image ${pokemon.pokemon.name}`}
+              />
+            ) : (
+              <img
+                src={pokemon.pokemon.sprites.front_default}
+                alt={`image ${pokemon.pokemon.name}`}
+              />
+            )}
             <p>{pokemon.pokemon.name}</p>
             <div className="types">
               {pokemon.pokemon.types.map((type, index) => {
@@ -22,7 +32,6 @@ const InfoPokemon = (pokemon) => {
                 );
               })}
             </div>
-
             <div className="dimensions">
               <div>
                 <h3>Height</h3>
@@ -47,7 +56,8 @@ const InfoPokemon = (pokemon) => {
                 console.log(stat);
                 return (
                   <div className="stat-detail" key={stat.stat.name}>
-                    <p>{stat.stat.name}</p>
+                    <p>{stat.stat.name}</p> :
+                    {/* <ProgressBar animated now={stat.base_stat} /> */}
                     <p>{stat.base_stat}</p>
                   </div>
                 );
