@@ -14,6 +14,7 @@ const Cards = ({ allPokemons, search, infoPoke, setLoadMore }) => {
             })
 
             .map((pokemon) => {
+              console.log(pokemon);
               return pokemon.sprites.front_default ? (
                 <div
                   className="pokemons-cards"
@@ -27,13 +28,24 @@ const Cards = ({ allPokemons, search, infoPoke, setLoadMore }) => {
                   />
                   <p className="pokemons-text"># {pokemon.id}</p>
                   <h2 className="pokemons-title">{pokemon.name}</h2>
+                  {pokemon.types.map((type) => {
+                    // <option key={type.type.name} value={type.type.name}>
+                    //   {type.type.name}
+                    // </option>;
+                    console.log(type.type.name);
+                    return (
+                      <div key={type.type.name}>
+                        <p>{type.type.name}</p>
+                      </div>
+                    );
+                  })}
                 </div>
               ) : (
                 ""
               );
             })}
         </div>
-        <Button />
+        <Button setLoadMore={setLoadMore} />
       </div>
 
       <div className="pokemons-cards-tablet">
@@ -43,7 +55,7 @@ const Cards = ({ allPokemons, search, infoPoke, setLoadMore }) => {
             // l'ajout de toLowerCase permet d'éviter que le search soit sensible à la casse.
           })
           .map((pokemon) => {
-            return (
+            return pokemon.sprites.front_default ? (
               <Link
                 to={`/pokemon/${pokemon.name}`}
                 key={pokemon.id}
@@ -57,8 +69,21 @@ const Cards = ({ allPokemons, search, infoPoke, setLoadMore }) => {
                   />
                   <p className="pokemons-text"># {pokemon.id}</p>
                   <h2 className="pokemons-title">{pokemon.name}</h2>
+                  {pokemon.types.map((type) => {
+                    // <option key={type.type.name} value={type.type.name}>
+                    //   {type.type.name}
+                    // </option>;
+                    console.log(type.type.name);
+                    return (
+                      <div key={type.type.name}>
+                        <p>{type.type.name}</p>
+                      </div>
+                    );
+                  })}
                 </div>
               </Link>
+            ) : (
+              ""
             );
           })}
         <Button setLoadMore={setLoadMore} />

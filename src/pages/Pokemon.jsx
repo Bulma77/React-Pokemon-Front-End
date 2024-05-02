@@ -43,6 +43,7 @@ const Pokemon = () => {
 
           const getPokemon = (results) => {
             results.map(async (pokemon) => {
+              console.log(pokemon);
               const response = await axios.get(
                 `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
               );
@@ -51,6 +52,7 @@ const Pokemon = () => {
             });
           };
           getPokemon(response.data.results);
+          console.log(response.data.results);
           setIsLoading(false);
         };
 

@@ -8,6 +8,7 @@ import Type from "./pages/Type";
 import Pokemondetails from "./pages/Pokemondetails";
 import Typedetail from "./pages/Typedetail";
 
+import Pagenotfound from "./pages/Pagenotfound";
 // Components
 
 import Header from "./components/Header";
@@ -23,6 +24,7 @@ function App() {
           <Route path="/type" element={<Type />} />
           <Route path="/pokemon/:id" element={<Pokemondetails />} />
           <Route path="/type/:id" element={<Typedetail />} />
+          <Route path="*" element={<Pagenotfound />} />
         </Routes>
       </Router>
     </>

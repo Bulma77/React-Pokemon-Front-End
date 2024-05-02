@@ -33,11 +33,11 @@
   color: gray;
   font-weight: 700;
 }
-.btn {
+/* .btn {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
 .left-content {
   width: 70%;

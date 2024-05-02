@@ -1,5 +1,6 @@
-import Stats from "../components/Stats";
-import ProgressBar from "react-bootstrap/ProgressBar";
+// import Stats from "../components/Stats";
+// import ProgressBar from "react-bootstrap/ProgressBar";
+import { Link } from "react-router-dom";
 
 const InfoPokemon = (pokemon) => {
   console.log(pokemon);
@@ -27,7 +28,9 @@ const InfoPokemon = (pokemon) => {
                 //   console.log(type.type.name);
                 return (
                   <div key={index}>
-                    <p>{type.type.name}</p>
+                    <Link to={`/type/${type.type.name}`}>
+                      <p>{type.type.name}</p>
+                    </Link>
                   </div>
                 );
               })}
