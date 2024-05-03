@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 // Import Loader
-// import Loader from "../components/Loader";
+import Loader from "../components/loader/Loader";
 
 // Import card
 import Cards from "../components/cards/Cards";
@@ -45,7 +45,7 @@ const Pokemon = () => {
       });
     };
     getPokemon(response.data.results);
-    console.log(response.data.results);
+    // console.log(response.data.results);
     setIsLoading(false);
   };
   useEffect(() => {
@@ -53,7 +53,7 @@ const Pokemon = () => {
   }, []);
 
   return isLoading ? (
-    <p>Loading in progress...</p>
+    <Loader />
   ) : (
     <>
       <Search setSearch={setSearch} allPokemons={allPokemons} />

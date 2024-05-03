@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useRef } from "react";
 
-import Loader from "../components/Loader";
+import Loader from "../components/loader/Loader";
 import { Link } from "react-router-dom";
 
 const Type = () => {
@@ -27,7 +27,7 @@ const Type = () => {
         const getTypePokemon = (results) => {
           // console.log(results);
           results.map(async (type) => {
-            console.log(type);
+            // console.log(type);
             const response = await axios.get(
               `https://pokeapi.co/api/v2/type/${type.name}`
             );

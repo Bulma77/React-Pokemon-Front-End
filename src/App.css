@@ -17,6 +17,10 @@ body {
   margin: 0 auto;
 }
 
+.logo {
+  width: 105px;
+}
+
 input {
   height: 40px;
   font-size: 20px;

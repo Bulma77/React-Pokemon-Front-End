@@ -1,0 +1,17 @@
+.loading-ball {
+  width: 200px;
+  height: 80vh;
+  filter: brightness(100%);
+  animation: rotatePokeBall ease-in-out 3s infinite;
+  display: block;
+  margin: 0 auto;
+}
+
+@keyframes rotatePokeBall {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

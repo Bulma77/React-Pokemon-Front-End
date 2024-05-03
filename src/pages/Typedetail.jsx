@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
+import Loader from "../components/loader/Loader";
 
 const Typedetail = () => {
   const [TypePokemon, setTypePokemon] = useState({});
@@ -24,7 +26,7 @@ const Typedetail = () => {
     fetchData();
   }, [id]);
   return isLoading ? (
-    <p>Loading in progress...</p>
+    <Loader />
   ) : (
     <>
       <h2>{TypePokemon.name}</h2>

@@ -32,7 +32,7 @@ const Cards = ({ allPokemons, search, infoPoke }) => {
                   // <option key={type.type.name} value={type.type.name}>
                   //   {type.type.name}
                   // </option>;
-                  console.log(type.type.name);
+                  // console.log(type.type.name);
                   return (
                     <div key={type.type.name}>
                       <p>{type.type.name}</p>
@@ -71,7 +71,7 @@ const Cards = ({ allPokemons, search, infoPoke }) => {
                     // <option key={type.type.name} value={type.type.name}>
                     //   {type.type.name}
                     // </option>;
-                    console.log(type.type.name);
+                    // console.log(type.type.name);
                     return (
                       <div key={type.type.name}>
                         <p>{type.type.name}</p>
