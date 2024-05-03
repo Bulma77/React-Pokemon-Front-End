@@ -1,9 +1,9 @@
-const Detail = ({ data, id }) => {
-  const gif =
-    "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/XXX.gif".replace(
-      "XXX",
-      id.toString()
-    );
+const Detail = ({ data }) => {
+  // const gif =
+  //   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/XXX.gif".replace(
+  //     "XXX",
+  //     id.toString()
+  //   );
   return (
     <div className="detail-pokemon">
       {data.sprites.other.showdown.front_default ? (

@@ -82,7 +82,6 @@ const Cards = ({ allPokemons, search, infoPoke }) => {
               </Link>
             );
           })}
-        {/* <Button setLoadMore={setLoadMore} /> */}
       </div>
     </>
   );

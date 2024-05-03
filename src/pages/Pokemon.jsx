@@ -9,6 +9,8 @@ import Cards from "../components/cards/Cards";
 
 import InfoPokemon from "../components/InfoPokemon";
 
+import Scrolltop from "../components/scrolltop/Scrolltop";
+
 // import Search
 import Search from "../components/Search";
 
@@ -55,7 +57,6 @@ const Pokemon = () => {
   ) : (
     <>
       <Search setSearch={setSearch} allPokemons={allPokemons} />
-
       <div className="all-pokemons">
         <div className="left-content">
           <Cards
@@ -73,6 +74,7 @@ const Pokemon = () => {
 
         <InfoPokemon pokemon={pokedex} />
       </div>
+      <Scrolltop />
     </>
   );
 };
