@@ -1,9 +1,6 @@
+import typeColors from "../typeColors";
+
 const Detail = ({ data }) => {
-  // const gif =
-  //   "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/XXX.gif".replace(
-  //     "XXX",
-  //     id.toString()
-  //   );
   return (
     <div className="detail-pokemon">
       {data.sprites.other.showdown.front_default ? (
@@ -15,25 +12,28 @@ const Detail = ({ data }) => {
         <img src={data.sprites.front_default} alt={`image ${data.name}`} />
       )}
 
-      <p>{data.name}</p>
-      <div className="types">
+      <h2>{data.name}</h2>
+      <div className="pokemon-type">
         {data.types.map((type, index) => {
           //   console.log(type.type.name);
           return (
-            <div key={index}>
-              <p>{type.type.name}</p>
-            </div>
+            <p
+              key={index}
+              style={{ backgroundColor: typeColors[type.type.name] }}
+            >
+              {type.type.name}
+            </p>
           );
         })}
       </div>
 
       <div className="dimensions">
         <div>
-          <h3>Height</h3>
+          <p>Height</p>
           <p>{data.height}</p>
         </div>
         <div>
-          <h3>weight</h3>
+          <p>weight</p>
           <p>{data.weight}</p>
         </div>
       </div>

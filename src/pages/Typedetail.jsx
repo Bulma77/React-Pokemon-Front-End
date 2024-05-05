@@ -16,7 +16,7 @@ const Typedetail = () => {
         const response = await axios.get(
           `https://pokeapi.co/api/v2/type/${id}`
         );
-        console.log(response.data);
+        console.log(response.data.pokemon.pokemon);
         setTypePokemon(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -25,6 +25,7 @@ const Typedetail = () => {
     };
     fetchData();
   }, [id]);
+
   return isLoading ? (
     <Loader />
   ) : (
@@ -32,21 +33,14 @@ const Typedetail = () => {
       <h2>{TypePokemon.name}</h2>
       <div className="type-pokemon">
         {TypePokemon.pokemon.map((elem, index) => {
-          const newIndex = index + 1;
-          const imgpokemon =
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/XXX.png".replace(
-              "XXX",
-              newIndex.toString()
-            );
-          console.log(imgpokemon);
           console.log(elem);
+
           return (
-            <>
-              <div className="type-pokemon-detail">
-                <p>{elem.pokemon.name}</p>
-                <img src={imgpokemon} alt="" />
-              </div>
-            </>
+            <div className="type-pokemon-detail" key={index}>
+              <p>{elem.pokemon.name}</p>
+
+              <p>{console.log(elem.pokemon.url)}</p>
+            </div>
           );
         })}
       </div>

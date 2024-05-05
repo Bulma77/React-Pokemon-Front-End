@@ -65,11 +65,10 @@ const Pokemon = () => {
             setSearch={setSearch}
             infoPoke={(poke) => setPokedex(poke)}
           />
-          {setLoadMore && (
-            <button className="btn" onClick={() => getAllPokemons()}>
-              Load More
-            </button>
-          )}
+
+          <button className="btn" onClick={() => getAllPokemons()}>
+            Load More
+          </button>
         </div>
 
         <InfoPokemon pokemon={pokedex} />

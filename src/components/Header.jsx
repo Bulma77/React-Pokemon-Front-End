@@ -16,7 +16,7 @@ const Header = () => {
             <Nav className="ms-auto">
               <Nav.Link href="/">HOME</Nav.Link>
               <Nav.Link href="/pokemon">POKEMON</Nav.Link>
-              <Nav.Link href="/type">TYPE</Nav.Link>
+              {/* <Nav.Link href="/type">TYPE</Nav.Link> */}
             </Nav>
           </Navbar.Collapse>
         </Container>

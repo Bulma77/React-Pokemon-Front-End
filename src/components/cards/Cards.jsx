@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "../cards/cards.css";
+import typeColors from "../../TypeColors";
 
 const Cards = ({ allPokemons, search, infoPoke }) => {
   return (
@@ -27,18 +28,18 @@ const Cards = ({ allPokemons, search, infoPoke }) => {
                 />
                 <p className="pokemons-text"># {pokemon.id}</p>
                 <h2 className="pokemons-title">{pokemon.name}</h2>
-
-                {pokemon.types.map((type) => {
-                  // <option key={type.type.name} value={type.type.name}>
-                  //   {type.type.name}
-                  // </option>;
-                  // console.log(type.type.name);
-                  return (
-                    <div key={type.type.name}>
-                      <p>{type.type.name}</p>
-                    </div>
-                  );
-                })}
+                <div className="pokemon-type">
+                  {pokemon.types.map((type) => {
+                    return (
+                      <p
+                        key={type.type.name}
+                        style={{ backgroundColor: typeColors[type.type.name] }}
+                      >
+                        {type.type.name}
+                      </p>
+                    );
+                  })}
+                </div>
               </div>
             ) : (
               ""
@@ -67,17 +68,24 @@ const Cards = ({ allPokemons, search, infoPoke }) => {
                   />
                   <p className="pokemons-text"># {pokemon.id}</p>
                   <h2 className="pokemons-title">{pokemon.name}</h2>
-                  {pokemon.types.map((type) => {
-                    // <option key={type.type.name} value={type.type.name}>
-                    //   {type.type.name}
-                    // </option>;
-                    // console.log(type.type.name);
-                    return (
-                      <div key={type.type.name}>
-                        <p>{type.type.name}</p>
-                      </div>
-                    );
-                  })}
+                  <div className="pokemon-type">
+                    {pokemon.types.map((type) => {
+                      // <option key={type.type.name} value={type.type.name}>
+                      //   {type.type.name}
+                      // </option>;
+                      // console.log(type.type.name);
+                      return (
+                        <p
+                          key={type.type.name}
+                          style={{
+                            backgroundColor: typeColors[type.type.name],
+                          }}
+                        >
+                          {type.type.name}
+                        </p>
+                      );
+                    })}
+                  </div>
                 </div>
               </Link>
             );

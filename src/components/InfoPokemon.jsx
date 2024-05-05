@@ -2,6 +2,7 @@
 // import ProgressBar from "react-bootstrap/ProgressBar";
 import { Link } from "react-router-dom";
 
+import typeColors from "../typeColors";
 const InfoPokemon = (pokemon) => {
   console.log(pokemon);
   return (
@@ -14,34 +15,37 @@ const InfoPokemon = (pokemon) => {
             {pokemon.pokemon.sprites.other.showdown.front_default ? (
               <img
                 src={pokemon.pokemon.sprites.other.showdown.front_default}
-                alt={`image ${pokemon.pokemon.name}`}
+                alt={`image of ` + pokemon.pokemon.name}
               />
             ) : (
               <img
-                src={pokemon.pokemon.sprites.front_default}
-                alt={`image ${pokemon.pokemon.name}`}
+                src={
+                  pokemon.pokemon.sprites.other["official-artwork"]
+                    .front_default
+                }
+                alt={`image of ` + pokemon.pokemon.name}
               />
             )}
-            <p>{pokemon.pokemon.name}</p>
-            <div className="types">
+            <h2>{pokemon.pokemon.name}</h2>
+            <div className="pokemon-type">
               {pokemon.pokemon.types.map((type, index) => {
                 //   console.log(type.type.name);
                 return (
-                  <div key={index}>
-                    <Link to={`/type/${type.type.name}`}>
-                      <p>{type.type.name}</p>
-                    </Link>
-                  </div>
+                  <Link to={`/type/${type.type.name}`} key={index}>
+                    <p style={{ backgroundColor: typeColors[type.type.name] }}>
+                      {type.type.name}
+                    </p>
+                  </Link>
                 );
               })}
             </div>
             <div className="dimensions">
               <div>
-                <h3>Height</h3>
+                <p>Height</p>
                 <p>{pokemon.pokemon.height}</p>
               </div>
               <div>
-                <h3>weight</h3>
+                <p>weight</p>
                 <p>{pokemon.pokemon.weight}</p>
               </div>
             </div>

@@ -1,16 +1,27 @@
 * {
   box-sizing: border-box;
 }
+a {
+  text-decoration: none !important;
+  color: black !important;
+}
 img {
   object-fit: contain;
 }
 
 body {
+  font-family: "Nintendo U", sans-serif !important;
   background: #f6f8fc;
   /* background-image: url("./assets/pokeball.png"); */
   background-repeat: no-repeat;
   /* background-position-x: -180px;
   background-position-y: -80px; */
+}
+h2 {
+  font-size: 20px !important;
+}
+p {
+  margin-bottom: 0 !important;
 }
 .wrapper {
   max-width: 1200px;
