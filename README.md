@@ -77,7 +77,7 @@ For Boostrap see https://react-bootstrap.netlify.app/
 
 ## Links
 
-- To view the site :
+- To view the site : https://pricilliaedou2.github.io/React-Pokemon-Front-End/
 
   deployment of the site on Netlify (https://docs.netlify.com/)
 
